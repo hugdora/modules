@@ -14,7 +14,7 @@ resource "aws_ecs_cluster" "ecs_cluster" {
 
 # CloudWatch Log Group 
 resource "aws_cloudwatch_log_group" "log_group" {
-  name = "/ecs/${var.environment}-${var.project_name}-td"
+  name              = "/ecs/${var.environment}-${var.project_name}-td"
   retention_in_days = 30
   skip_destroy      = true
 
@@ -83,6 +83,7 @@ resource "aws_ecs_service" "ecs_service" {
   deployment_maximum_percent         = 200
   enable_ecs_managed_tags            = true
   propagate_tags                     = "SERVICE"
+  force_new_deployment               = true
 
   # Wait for service to reach steady state before marking complete
   wait_for_steady_state = true
