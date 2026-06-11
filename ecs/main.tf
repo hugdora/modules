@@ -15,6 +15,8 @@ resource "aws_ecs_cluster" "ecs_cluster" {
 # CloudWatch Log Group 
 resource "aws_cloudwatch_log_group" "log_group" {
   name = "/ecs/${var.environment}-${var.project_name}-td"
+  retention_in_days = 30
+  skip_destroy      = true
 
   lifecycle {
     create_before_destroy = true
