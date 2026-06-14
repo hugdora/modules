@@ -84,6 +84,7 @@ resource "aws_ecs_service" "ecs_service" {
   enable_ecs_managed_tags            = true
   propagate_tags                     = "SERVICE"
   force_new_deployment               = true
+  enable_execute_command = true
 
   # Wait for service to reach steady state before marking complete
   wait_for_steady_state = true
